@@ -1,0 +1,11 @@
+{
+    "default_theme": "system",
+    "themes": {
+        "light": "eclipse",
+        "dark": "monokai"
+    },
+    "languages_core": ["javascript", "json", "xml", "css", "htmlmixed", "markdown", "python", "shell", "clike"],
+    "addons": ["matchBrackets", "closeBrackets", "activeLine", "searchCursor"],
+    "base_self_host": "/assets/vendor/codemirror6",
+    "notes": "Self-host default. Jika ingin CDN: panggil SnipVaultCM.setSourceBase('https://cdn.jsdelivr.net/npm/codemirror@6.65.7');"
+}

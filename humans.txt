@@ -1,0 +1,13 @@
+/* 
+TEAM
+  Developer: TenRusl
+  Site: https://tenrusl-snipvault.pages.dev
+  GitHub: https://github.com/kakrusliandika/TenRusl-SnipVault
+
+THANKS
+  CodeMirror, DOMPurify, Dexie, idb-keyval, LZ-String
+
+SITE
+  Languages: English, Indonesian
+  Standards: HTML5, CSS3, JavaScript
+*/

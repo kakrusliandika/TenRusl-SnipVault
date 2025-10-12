@@ -1,0 +1,128 @@
+/* =========================================
+   SnipVault — vault.css (additive behaviors)
+   Scope: .sv-app ONLY
+   ========================================= */
+
+/* long list scrolling */
+.sv-app .sv-list {
+    max-height: calc(100vh - 280px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    scroll-snap-type: y proximity;
+}
+.sv-app .sv-list > * {
+    scroll-snap-align: start;
+}
+
+/* selection & focus */
+.sv-app .sv-item[aria-selected="true"],
+.sv-app .sv-list-item[aria-selected="true"] {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.22) inset;
+}
+.sv-app .sv-item:focus-visible,
+.sv-app .sv-list-item:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+/* tag chips & markers */
+.sv-app .sv-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.sv-app .sv-tag {
+    font-size: 11px;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.12);
+    border: 1px solid var(--border);
+    color: var(--muted);
+}
+.sv-app .is-favorite {
+    color: #fbbf24;
+}
+.sv-app .is-pinned {
+    color: #38bdf8;
+}
+
+/* search highlight */
+.sv-app mark.sv-hl {
+    background: rgba(139, 92, 246, 0.25);
+    color: inherit;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+/* codemirror polish (if present) */
+#sv-editor-host .cm-editor {
+    height: 420px;
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 14px;
+}
+#sv-editor-host .cm-editor .cm-content {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+}
+#sv-editor-host .cm-editor .cm-selectionBackground {
+    background: rgba(139, 92, 246, 0.25) !important;
+}
+
+/* notes preview basics */
+.sv-app #sv-preview-notes :is(h1, h2, h3) {
+    margin: 0.6em 0 0.35em;
+    line-height: 1.25;
+}
+.sv-app #sv-preview-notes h1 {
+    font-size: 20px;
+}
+.sv-app #sv-preview-notes h2 {
+    font-size: 18px;
+}
+.sv-app #sv-preview-notes h3 {
+    font-size: 16px;
+}
+.sv-app #sv-preview-notes p {
+    margin: 0.5em 0;
+}
+.sv-app #sv-preview-notes code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 12px;
+    padding: 1px 6px;
+    border-radius: 6px;
+    background: rgba(148, 163, 184, 0.16);
+    border: 1px solid var(--border);
+}
+.sv-app #sv-preview-notes pre {
+    margin: 0.6em 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: auto;
+}
+
+/* drag & drop affordance (optional hooks) */
+.sv-app .sv-item.dragging,
+.sv-app .sv-list-item.dragging {
+    opacity: 0.75;
+}
+.sv-app .sv-item.drop-target,
+.sv-app .sv-list-item.drop-target {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.18) inset;
+}
+
+/* print tidy */
+@media print {
+    #sv-editor-host .cm-editor {
+        height: auto;
+    }
+    #sv-editor-host .cm-editor .cm-scroller {
+        overflow: visible !important;
+    }
+}

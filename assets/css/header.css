@@ -1,0 +1,125 @@
+/* =====================================================
+   HEADER STYLES (app + pages)
+   File: header.css
+   Scoped to avoid conflicts; complements chrome.css & app.css
+   ===================================================== */
+
+/* container */
+:is(.app-header, .site-header) {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    backdrop-filter: saturate(140%) blur(8px);
+}
+:is(.app-header, .site-header) a {
+    text-decoration: none;
+}
+
+/* brand (scoped) */
+:is(.app-header, .site-header) .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+}
+:is(.app-header, .site-header) .brand strong {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+:is(.app-header, .site-header) .brand .badge {
+    background: var(--surface);
+    color: var(--muted);
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 11px;
+    border: 1px solid var(--border);
+}
+.brand-full {
+    display: inline;
+}
+.brand-abbr {
+    display: none;
+}
+
+/* nav (SCOPED to header to avoid global .nav collisions) */
+:is(.app-header, .site-header) .nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+:is(.app-header, .site-header) .nav a:hover,
+:is(.app-header, .site-header) .nav a.active {
+    color: var(--text);
+    background: var(--surface);
+}
+
+/* pages mobile nav popover (header-pages) */
+@media (max-width: 860px) {
+    :is(.app-header, .site-header) .nav-toggle {
+        display: inline-grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+    }
+    :is(.app-header, .site-header) .nav {
+        position: absolute;
+        right: 12px;
+        top: 60px;
+        display: none;
+        flex-direction: column;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 8px;
+        box-shadow: var(--shadow);
+        max-width: calc(100vw - 24px);
+    }
+    :is(.app-header, .site-header) .nav.open {
+        display: flex;
+    }
+    :is(.app-header, .site-header) .nav a {
+        width: 100%;
+    }
+}
+
+/* mobile: bigger touch targets + brand abbreviation */
+@media (max-width: 980px) {
+    .brand-full {
+        display: none;
+    }
+    .brand-abbr {
+        display: inline;
+    }
+}
+
+/* PAGES-ONLY (mobile) override */
+@media (max-width: 980px) {
+    .app-header[data-scope="pages"] .controls .label {
+        display: none;
+    }
+    .app-header[data-scope="pages"] .controls .icon {
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+    }
+    .app-header[data-scope="pages"] .controls .icon-btn {
+        height: 38px;
+        min-width: 38px;
+        padding: 0 8px;
+        border-radius: 12px;
+    }
+}

@@ -1,0 +1,4 @@
+Third-Party Notices
+
+Dexie.js — Apache-2.0 License.
+See https://www.jsdelivr.com/package/npm/dexie and the Dexie repository for full license details.

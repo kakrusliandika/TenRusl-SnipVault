@@ -1,0 +1,4 @@
+Third-Party Notices
+
+idb-keyval — Apache-2.0 License.
+See https://www.jsdelivr.com/package/npm/idb-keyval for full license details.

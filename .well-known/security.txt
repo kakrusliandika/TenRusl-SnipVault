@@ -1,0 +1,5 @@
+Contact: mailto:security@tenrusli.com
+Policy: https://tenrusl-snipvault.pages.dev/security
+Acknowledgments: https://tenrusl-snipvault.pages.dev/security#hall-of-fame
+Preferred-Languages: en, id
+Canonical: https://tenrusl-snipvault.pages.dev/.well-known/security.txt

@@ -1,0 +1,224 @@
+{
+    "meta": {
+        "name": "TenRusl SnipVault",
+        "locale": "en",
+        "updated_at": 1760029200000,
+        "version": 2
+    },
+    "app": {
+        "title": "SnipVault",
+        "subtitle": "Private snippet vault — fast, private, offline."
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "snippets": "Snippets",
+        "settings": "Settings",
+        "about": "About"
+    },
+    "actions": {
+        "new": "New",
+        "save": "Save",
+        "delete": "Delete",
+        "duplicate": "Duplicate",
+        "copy": "Copy",
+        "export": "Export",
+        "import": "Import",
+        "close": "Close",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "apply": "Apply",
+        "reset": "Reset",
+        "ok": "OK",
+        "open": "Open"
+    },
+    "filters": {
+        "search_placeholder": "Search title, content, or tags…",
+        "language": "Language",
+        "tags": "Tags",
+        "tags_hint": "Separate with commas",
+        "and_mode": "AND (match all tags)",
+        "favorite": "Favorite",
+        "pinned": "Pinned",
+        "pinned_first": "Pinned first"
+    },
+    "sort": {
+        "label": "Sort",
+        "updated_at": "Last edited",
+        "created_at": "First created",
+        "title": "Title",
+        "language": "Language",
+        "asc": "Asc",
+        "desc": "Desc"
+    },
+    "editor": {
+        "title": "Title",
+        "language": "Language",
+        "content": "Content",
+        "notes": "Notes",
+        "favorite": "Favorite",
+        "pinned": "Pinned",
+        "preview_notes": "Notes Preview",
+        "empty": "No snippet selected."
+    },
+    "status": {
+        "count": "{{n}} results",
+        "empty_list": "No snippets yet. Create your first!",
+        "init_error": "Initialization failed. Check console."
+    },
+    "shortcuts": {
+        "palette": "Global search",
+        "save": "Save",
+        "new": "New snippet",
+        "nav": "List navigation",
+        "enter": "Open snippet"
+    },
+    "export": {
+        "title": "Export",
+        "all": "Export all",
+        "selected": "Export selected",
+        "filename_all": "snipvault-export-{{date}}.json",
+        "filename_sel": "snipvault-selection-{{date}}.json",
+        "done": "Export complete ({{n}} items)."
+    },
+    "import": {
+        "title": "Import",
+        "pick_file": "Choose a SnipVault export JSON file",
+        "strategy": "Conflict strategy",
+        "strategy_skip": "Skip conflicts",
+        "strategy_overwrite_id": "Overwrite if same ID",
+        "strategy_insert_new": "Always insert as new",
+        "dedup_by_title": "De-duplicate by title",
+        "preview": "Conflict Preview",
+        "summary": "Total: {{total}}, Imported: {{imported}}, Skipped: {{skipped}}",
+        "no_conflict": "No conflicts detected.",
+        "has_conflict": "Conflicts found: {{n}}"
+    },
+    "dialogs": {
+        "delete_confirm": "Delete this snippet?",
+        "clipboard_denied": "Clipboard failed. Permission required."
+    },
+    "settings": {
+        "theme": "Theme",
+        "theme_system": "System",
+        "theme_light": "Light",
+        "theme_dark": "Dark",
+        "secure_mode": "Secure Mode (local encryption)",
+        "editor": "Editor",
+        "editor_font": "Mono Font",
+        "editor_size": "Font Size",
+        "language_ui": "UI Language",
+        "backup": "Backup Reminder",
+        "every_days": "Every {{n}} days"
+    },
+    "pwa": {
+        "install": "Install App",
+        "offline_ready": "Offline ready",
+        "update_available": "Update available — reload?"
+    },
+    "aliases": {
+        "new": "New",
+        "save": "Save",
+        "delete": "Delete",
+        "duplicate": "Duplicate",
+        "copy": "Copy",
+        "export": "Export",
+        "import": "Import",
+        "close": "Close",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "apply": "Apply",
+        "reset": "Reset",
+        "ok": "OK",
+        "open": "Open",
+        "results": "Results",
+        "language": "Language",
+        "tags": "Tags",
+        "andMode": "AND mode",
+        "favorites": "Favorites only",
+        "pinned": "Pinned",
+        "pinnedFirst": "Pinned first",
+        "sortBy": "Sort by",
+        "title": "Title",
+        "notes": "Notes",
+        "preview": "Preview",
+        "list": "List",
+        "empty": "No items"
+    },
+    "guide": {
+        "title": "How to use SnipVault",
+        "subtitle": "Quick start, tips, offline, backup—everything in one page.",
+        "quickstart": {
+            "title": "Quick Start",
+            "steps": [
+                "Click <b>New</b> to create a snippet.",
+                "Fill <b>Title</b>, choose <b>Language</b>, type your code/notes.",
+                "Add <b>Tags</b> (comma separated) for easy filtering.",
+                "Mark <b>Favorite</b> or <b>Pinned</b> if needed.",
+                "Press <b>Save</b> (or <span class=\"kbd\">Ctrl</span>+<span class=\"kbd\">S</span>)."
+            ]
+        },
+        "capture": {
+            "title": "Capture & Edit",
+            "items": [
+                "Duplicate from an existing snippet using <b>Duplicate</b>.",
+                "Use the <b>Notes</b> panel (markdown-lite) for explanations.",
+                "Click <b>Copy</b> to copy code to clipboard."
+            ]
+        },
+        "search": {
+            "title": "Search & Filter",
+            "items": [
+                "Global search supports title, content, and tags.",
+                "Filter by <b>Language</b>, <b>Tags</b>, <b>Favorites</b>, and <b>Pinned</b>.",
+                "Toggle <b>AND mode</b> to match all tags.",
+                "Sort by <b>updated_at</b>, <b>created_at</b>, <b>title</b>, or <b>language</b>."
+            ]
+        },
+        "transfer": {
+            "title": "Import & Export",
+            "items": [
+                "Click <b>Export</b> to download a <code>.json</code> of all snippets.",
+                "Use <b>Import</b> to load a previous export; conflicts are auto-checked.",
+                "Choose a strategy: <i>skip</i>, <i>overwrite-id</i>, or <i>always-insert</i> (see preview)."
+            ]
+        },
+        "backup": {
+            "title": "Backup & Restore",
+            "items": [
+                "Enable periodic backup reminders in Settings (e.g., every 7 days).",
+                "Keep exports in cloud storage or version control."
+            ]
+        },
+        "offline": {
+            "title": "Offline & PWA",
+            "items": [
+                "Install as App (PWA) for 1-click access; fully works offline.",
+                "Updates are small; if a banner appears, reload to apply."
+            ]
+        },
+        "shortcuts": {
+            "title": "Keyboard Shortcuts",
+            "items": [
+                "<span class=\"kbd\">Ctrl</span>+<span class=\"kbd\">K</span> — Global search",
+                "<span class=\"kbd\">Ctrl</span>+<span class=\"kbd\">S</span> — Save",
+                "<span class=\"kbd\">N</span> — New snippet",
+                "<span class=\"kbd\">Del</span> — Delete (with confirm)"
+            ]
+        },
+        "troubleshoot": {
+            "title": "Troubleshooting",
+            "items": [
+                "If the list is empty, check filters and clear the search.",
+                "If save fails, ensure browser storage isn’t blocked (incognito quotas).",
+                "Import errors: confirm the file is a valid SnipVault export."
+            ]
+        },
+        "privacy": {
+            "title": "Privacy & Security",
+            "items": [
+                "Data stays in your browser (IndexedDB). Optional local encryption via Secure Mode.",
+                "Always export before clearing site data or reinstalling the browser."
+            ]
+        }
+    }
+}

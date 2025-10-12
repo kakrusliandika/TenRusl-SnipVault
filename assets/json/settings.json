@@ -1,0 +1,19 @@
+{
+    "theme": "system",
+    "editor_opts": {
+        "lineNumbers": true,
+        "lineWrapping": true,
+        "tabSize": 2,
+        "indentUnit": 2,
+        "fontSize": 14,
+        "fontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+        "themeLight": "eclipse",
+        "themeDark": "monokai"
+    },
+    "secure_mode": false,
+    "i18n": "id",
+    "backup": {
+        "enabled": true,
+        "reminder_days": 14
+    }
+}

@@ -1,0 +1,669 @@
+/* ==========================================================
+   SnipVault — app.css (from scratch, mobile-first & clean)
+   Scope: .sv-app ONLY (aman terhadap stylesheet lain)
+   ========================================================== */
+
+:root {
+    /* Atur ini jika ada top appbar/fixed header global, mis. 56px */
+    --sv-sticky-top: 0px;
+
+    /* Tutorial modal vars */
+    --sv-modal-ms: 260ms;
+    --sv-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light mode — Delete button (sv-btn-delete): teks & ikon merah pekat */
+:root.light #sv-btn-delete {
+    color: #ff0000 !important;
+    border-color: #ff0000 !important;
+    background: rgba(255, 0, 0, 0.08) !important;
+}
+:root.light #sv-btn-delete:hover {
+    background: rgba(255, 0, 0, 0.12) !important;
+}
+:root.light #sv-btn-delete .icon,
+:root.light #sv-btn-delete svg {
+    color: #ff0000 !important;
+    fill: currentColor !important;
+    stroke: currentColor !important;
+}
+
+.sv-app,
+.sv-app * {
+    box-sizing: border-box;
+}
+
+.sv-app {
+    /* JANGAN redefinisi token di sini.
+     Biarkan ikut var dari :root / :root.light di theme.css */
+    color: var(--text);
+    width: min(1280px, 94vw);
+    margin: 16px auto 24px;
+    display: grid;
+    gap: 16px;
+}
+
+/* ---------- text helpers ---------- */
+.sv-app .small {
+    font-size: 12px;
+    color: var(--muted);
+}
+.sv-app .label {
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+.sv-app .icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}
+.sv-app .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(148, 163, 184, 0.08);
+    font-size: 12px;
+}
+
+/* ---------- buttons ---------- */
+.sv-app .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    color: var(--text);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.sv-app .btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(167, 139, 250, 0.45);
+}
+.sv-app .btn:active {
+    transform: translateY(0);
+}
+.sv-app .btn.primary {
+    background: var(--brand);
+    color: #fff;
+    border-color: transparent;
+}
+.sv-app .btn.primary:hover {
+    background: var(--brand-strong);
+}
+.sv-app .btn.danger {
+    border-color: #ef4444;
+    color: #fee2e2;
+}
+.sv-app .btn.ghost {
+    background: transparent;
+}
+
+/* ---------- header ---------- */
+.sv-app .sv-header {
+    display: grid;
+    gap: 10px;
+}
+@media (min-width: 980px) {
+    .sv-app .sv-header {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+}
+
+/* search */
+.sv-app .sv-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    padding-left: 38px;
+    padding-right: 10px;
+    box-shadow: var(--shadow);
+}
+.sv-app .sv-search > .icon {
+    position: absolute;
+    left: 12px;
+    opacity: 0.7;
+}
+.sv-app #sv-search {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font: 14px/1.2 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    outline: none;
+}
+.sv-app .sv-kbd {
+    display: inline-flex;
+    gap: 6px;
+    margin-left: 10px;
+    opacity: 0.65;
+}
+.sv-app .sv-kbd .kbd {
+    background: rgba(148, 163, 184, 0.16);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0 6px;
+    font: 11px/18px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+@media (max-width: 560px) {
+    .sv-app .sv-kbd {
+        display: none;
+    }
+}
+
+/* header actions (h-scroll on mobile) */
+.sv-app .sv-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+.sv-app .sv-actions::-webkit-scrollbar {
+    height: 8px;
+}
+
+/* ---------- layout body ---------- */
+.sv-app .sv-body {
+    display: grid;
+    gap: 16px;
+}
+@media (min-width: 980px) {
+    .sv-app .sv-body {
+        grid-template-columns: 320px 1fr;
+        align-items: start;
+    }
+}
+
+/* sidebar */
+.sv-app .sv-sidebar {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 8px 12px;
+    position: sticky;
+    top: 12px;
+    height: fit-content;
+}
+.sv-app .sv-filterbox__head {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 10px 6px;
+    margin: 0 0 8px;
+    border-bottom: 1px dashed var(--border);
+}
+.sv-app .sv-filterbox__head::-webkit-details-marker {
+    display: none;
+}
+.sv-app .sv-group {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+.sv-app .sv-group--row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.sv-app .sv-group select,
+.sv-app .sv-group input[type="text"] {
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+.sv-app .sv-sort {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+}
+.sv-app .sv-transfer {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 8px;
+    align-items: center;
+}
+.sv-app .sv-preview {
+    margin-top: 8px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    max-height: 220px;
+    overflow: auto;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* main panels */
+.sv-app .sv-main {
+    display: grid;
+    gap: 16px;
+}
+@media (min-width: 980px) {
+    .sv-app .sv-main {
+        grid-template-columns: 1fr 1.3fr;
+    }
+}
+
+.sv-app .sv-list-panel,
+.sv-app .sv-editor-panel {
+    display: grid;
+    gap: 12px;
+}
+
+/* ---------- LIST PANEL REMAKE (rapat, sticky halus) ---------- */
+.sv-app .sv-list-panel {
+    grid-template-rows: auto 1fr auto; /* head | list | empty */
+    gap: 0; /* rapat total: head menempel ke list */
+}
+
+.sv-app .sv-list-head {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel);
+}
+
+/* Header list lengket + menyatu dengan list */
+.sv-app .sv-list-head.sticky {
+    position: sticky;
+    top: var(--sv-sticky-top);
+    z-index: 3;
+    height: fit-content;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: var(--panel);
+}
+
+/* List nempel ke header, tanpa “double border” */
+.sv-app .sv-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 6px 0; /* compact & nyaman discroll */
+    margin-top: 0;
+    border: 1px solid var(--border);
+    border-top: none; /* hilangkan border ganda dengan head */
+    border-radius: 12px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background: var(--panel);
+    /* Jika sering scroll-into-view item, bantu agar tidak ketutup header lengket */
+    scroll-padding-top: calc(var(--sv-sticky-top) + 8px);
+}
+
+/* Empty state: beri napas sedikit karena gap parent = 0 */
+.sv-app .sv-list-panel > .empty {
+    margin-top: 8px;
+}
+
+.sv-app .empty {
+    padding: 28px 12px;
+    text-align: center;
+    color: var(--muted);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+}
+
+/* cards & form */
+.sv-app .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 12px;
+}
+.sv-app .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+@media (max-width: 980px) {
+    .sv-app .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.sv-app .field {
+    display: grid;
+    gap: 6px;
+}
+.sv-app .field label {
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+.sv-app #sv-title,
+.sv-app #sv-language,
+.sv-app #sv-tags {
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+.sv-app .flags {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.sv-app #sv-notes {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    min-height: 120px;
+    padding: 10px 12px;
+    resize: vertical;
+}
+
+/* editor host */
+.sv-app #sv-editor-host {
+    min-height: 360px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+/* list item (populated by JS) */
+.sv-app .sv-item,
+.sv-app .sv-list-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 10px 12px;
+    margin: 6px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+    transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease;
+    cursor: pointer;
+}
+.sv-app .sv-item:hover,
+.sv-app .sv-list-item:hover {
+    transform: translateY(-1px);
+    border-color: rgba(167, 139, 250, 0.45);
+}
+.sv-app .sv-title,
+.sv-app .sv-li-title {
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sv-app .sv-desc,
+.sv-app .sv-li-meta {
+    color: var(--muted);
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* accessibility & motion */
+.sv-app :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .sv-app *,
+    .sv-app *::before,
+    .sv-app *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* print */
+@media print {
+    .sv-app .sv-sidebar,
+    .sv-app .sv-actions {
+        display: none !important;
+    }
+    .sv-app {
+        width: 100%;
+        margin: 0;
+    }
+    .sv-app .card {
+        border: none;
+        box-shadow: none;
+    }
+}
+
+/* === SnipVault Tutorial Modal (only) — smooth + compact spacing === */
+
+/* Visibility */
+.sv-modal[hidden] {
+    display: none !important;
+}
+.sv-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
+.sv-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.6);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity var(--sv-modal-ms) var(--sv-ease);
+}
+.sv-modal__dialog {
+    position: relative;
+    z-index: 1001;
+    margin: 4vh auto;
+    width: min(920px, 94vw);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 8px;
+    padding: 12px;
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+    transition: opacity var(--sv-modal-ms) var(--sv-ease), transform var(--sv-modal-ms) var(--sv-ease);
+    outline: none;
+}
+
+/* Open/close states */
+.sv-modal.is-open .sv-modal__backdrop {
+    opacity: 1;
+}
+.sv-modal.is-open .sv-modal__dialog {
+    opacity: 1;
+    transform: none;
+}
+.sv-modal.is-closing .sv-modal__backdrop {
+    opacity: 0;
+}
+.sv-modal.is-closing .sv-modal__dialog {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+}
+
+/* Header */
+.sv-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.sv-modal__title {
+    margin: 0 0 2px;
+    font-size: 18px;
+    line-height: 1.25;
+}
+.sv-modal__subtitle {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* Slider */
+.sv-slider {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+}
+.sv-slides {
+    display: flex;
+    transition: transform 360ms var(--sv-ease);
+    will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+    .sv-slides {
+        transition: none;
+    }
+}
+
+/* Slides (compact spacing) */
+.sv-slide {
+    flex: 0 0 100%;
+    padding: 12px;
+    min-height: 240px;
+    display: grid;
+    gap: 6px;
+}
+.sv-slide h3 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.25;
+}
+.sv-slide h4 {
+    margin: 2px 0 2px;
+    font-size: 14px;
+    line-height: 1.25;
+}
+
+/* List spacing — compact utk ul/ol, pertahankan feel utk shortcut */
+.sv-ol,
+.sv-ul,
+.sv-kb {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+}
+.sv-ul {
+    padding-left: 18px;
+}
+.sv-ol {
+    padding-left: 20px;
+    list-style: decimal;
+}
+.sv-kb {
+    padding: 0;
+    list-style: none;
+}
+.sv-slide h3 + .sv-ul,
+.sv-slide h3 + .sv-ol {
+    margin-top: 2px;
+} /* Rapat */
+.sv-slide h3 + .sv-kb {
+    margin-top: 6px;
+} /* Shortcut tetap pas */
+.sv-slide li {
+    line-height: 1.35;
+}
+
+/* Keyboard key chip */
+.kbd {
+    background: rgba(148, 163, 184, 0.16);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0 6px;
+    font: 11px/18px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Nav buttons */
+.sv-slider__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(148, 163, 184, 0.08);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 120ms var(--sv-ease), background 120ms var(--sv-ease);
+}
+.sv-slider__nav:hover {
+    background: rgba(148, 163, 184, 0.16);
+    transform: translateY(-50%) scale(1.04);
+}
+.sv-slider__nav.prev {
+    left: 10px;
+}
+.sv-slider__nav.next {
+    right: 10px;
+}
+
+/* Dots */
+.sv-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 0;
+}
+.sv-dots button {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(148, 163, 184, 0.14);
+    cursor: pointer;
+    padding: 0;
+    transition: transform 120ms var(--sv-ease), background 120ms var(--sv-ease);
+}
+.sv-dots button:hover {
+    transform: scale(1.15);
+}
+.sv-dots button[aria-selected="true"] {
+    background: var(--brand);
+    border-color: var(--brand);
+}
+
+/* Mobile */
+@media (max-width: 540px) {
+    .sv-modal__dialog {
+        margin: 0;
+        inset: 0;
+        width: 100vw;
+        min-height: 100vh;
+        border-radius: 0;
+    }
+    .sv-slider__nav {
+        display: none;
+    } /* pakai swipe + dots */
+}

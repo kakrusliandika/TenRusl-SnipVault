@@ -1,0 +1,7 @@
+{
+    "db": "snipvault-db",
+    "store": "snipvault",
+    "base_self_host": "/assets/vendor/idb-keyval6/dist",
+    "cdn_fallback": "https://cdn.jsdelivr.net/npm/idb-keyval@6.2.2/dist/umd.js",
+    "notes": "idb-keyval adalah KV sederhana—tanpa indeks. Untuk query cepat pakai Dexie."
+}

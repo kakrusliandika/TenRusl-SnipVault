@@ -1,0 +1,18 @@
+{
+    "base_self_host": "/assets/vendor/dompurify3/dist",
+    "cdn_fallback": "https://cdn.jsdelivr.net/npm/dompurify@3.2.7/dist/purify.min.js",
+    "default_profile": "strict",
+    "profiles": {
+        "strict": {
+            "ALLOW_DATA_ATTR": false,
+            "FORBID_TAGS": ["script", "style", "iframe", "object", "embed", "svg", "math", "link", "meta", "base"]
+        },
+        "markdown": {
+            "ALLOW_DATA_ATTR": false,
+            "IMG_ALLOWED": true
+        },
+        "svg": {
+            "NOTE": "subset svg aman tanpa foreignObject & event handlers"
+        }
+    }
+}

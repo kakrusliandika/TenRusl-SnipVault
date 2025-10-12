@@ -1,0 +1,10 @@
+{
+    "db_name": "snipvault",
+    "db_version": 1,
+    "stores": {
+        "snippet": "++id, title, *tags, language, updated_at, favorite, pinned",
+        "settings": "id"
+    },
+    "base_self_host": "/assets/vendor/dexie4/dist",
+    "cdn_fallback": "https://cdn.jsdelivr.net/npm/dexie@4.2.0/dist/dexie.min.js"
+}

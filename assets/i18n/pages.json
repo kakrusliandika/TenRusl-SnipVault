@@ -1,0 +1,223 @@
+{
+    "en": {
+        "nav": {
+            "home": "Home",
+            "contact": "Contact",
+            "privacy": "Privacy",
+            "terms": "Terms",
+            "cookies": "Cookies"
+        },
+
+        "common": {
+            "lastUpdated": "Last updated",
+            "copied": "Copied",
+            "ok": "OK"
+        },
+
+        "contact": {
+            "title": "Contact — TenRusl SnipVault",
+            "heading": "Contact",
+            "description": "We’d love to hear from you.",
+            "form": {
+                "nameLabel": "Name",
+                "namePlaceholder": "Your name",
+                "emailLabel": "Email",
+                "emailPlaceholder": "you@example.com",
+                "messageLabel": "Message",
+                "messagePlaceholder": "How can we help?",
+                "help": "Submitting uses your email app (mailto). You can also write us directly.",
+                "submit": "Send",
+                "openMail": "Open mail app"
+            },
+            "direct": {
+                "title": "Direct",
+                "emailLabel": "Email",
+                "copyBtn": "Copy email",
+                "hours": "Support hours: 09:00–18:00 (Asia/Jakarta), Mon–Fri."
+            }
+        },
+
+        "privacy": {
+            "title": "Privacy Policy — TenRusl SnipVault",
+            "heading": "Privacy Policy",
+            "intro": "TenRusl SnipVault (the “Service”) is an offline-first snippet vault. We respect your privacy.",
+            "summary": {
+                "heading": "Summary",
+                "item1": "No account required. Data is stored locally in your browser (IndexedDB).",
+                "item2": "No third-party tracking or analytics by default.",
+                "item3": "We do not sell personal data."
+            },
+            "data": {
+                "heading": "Data We Process",
+                "body": "The app processes your snippet content and preferences locally on your device. Network requests occur only for loading static assets and updates."
+            },
+            "cookies": {
+                "heading": "Cookies & Storage",
+                "body": "We primarily use local storage/IndexedDB for functionality. Cookies may be used only for basic preferences where necessary."
+            },
+            "ads": {
+                "heading": "Advertising",
+                "body": "We do not display third-party ads in SnipVault."
+            },
+            "rights": {
+                "heading": "Your Rights",
+                "body": "Subject to applicable law, you may export or delete your local data at any time using the app’s controls. For questions, contact us via the Contact page."
+            },
+            "contact": {
+                "heading": "Contact"
+            }
+        },
+
+        "terms": {
+            "title": "Terms of Service — TenRusl SnipVault",
+            "heading": "Terms of Service",
+            "items": [
+                { "title": "Acceptance", "body": "By accessing the Service, you agree to these terms." },
+                { "title": "Use", "body": "Do not misuse the Service, including spam, abuse, or unlawful activity." },
+                {
+                    "title": "Ownership",
+                    "body": "Copyright for source code and brand assets remains with their respective owners."
+                },
+                { "title": "Disclaimer", "body": "The Service is provided “as is” without warranties." },
+                { "title": "Limitation of Liability", "body": "We are not liable for indirect damages or data loss." },
+                { "title": "Changes", "body": "We may update these terms from time to time." },
+                { "title": "Contact", "body": "See the Contact page." }
+            ]
+        },
+
+        "cookies": {
+            "title": "Cookie Policy — TenRusl SnipVault",
+            "heading": "Cookie Policy",
+            "intro": "We use only the minimal technologies needed to run SnipVault, prioritizing local storage and offline-first behavior.",
+            "types": {
+                "heading": "Types of Storage",
+                "essential": {
+                    "name": "Essential",
+                    "desc": "Security, sessionless preferences, offline data (IndexedDB)."
+                },
+                "analytics": { "name": "Optional analytics", "desc": "None by default." },
+                "advertising": { "name": "Advertising", "desc": "Not used." }
+            },
+            "table": { "headType": "Type", "headPurpose": "Purpose" },
+            "manage": {
+                "heading": "Manage Preferences",
+                "body": "Adjust settings in the app. You can export or delete your data anytime.",
+                "resetBtn": "Reset preferences"
+            }
+        }
+    },
+
+    "id": {
+        "nav": {
+            "home": "Beranda",
+            "contact": "Kontak",
+            "privacy": "Privasi",
+            "terms": "Ketentuan",
+            "cookies": "Cookie"
+        },
+
+        "common": {
+            "lastUpdated": "Terakhir diperbarui",
+            "copied": "Tersalin",
+            "ok": "OK"
+        },
+
+        "contact": {
+            "title": "Kontak — TenRusl SnipVault",
+            "heading": "Kontak",
+            "description": "Kami senang mendengar dari Anda.",
+            "form": {
+                "nameLabel": "Nama",
+                "namePlaceholder": "Nama Anda",
+                "emailLabel": "Email",
+                "emailPlaceholder": "anda@contoh.com",
+                "messageLabel": "Pesan",
+                "messagePlaceholder": "Ada yang bisa kami bantu?",
+                "help": "Pengiriman menggunakan aplikasi email Anda (mailto). Anda juga dapat menghubungi langsung.",
+                "submit": "Kirim",
+                "openMail": "Buka aplikasi email"
+            },
+            "direct": {
+                "title": "Langsung",
+                "emailLabel": "Email",
+                "copyBtn": "Salin email",
+                "hours": "Jam dukungan: 09.00–18.00 (Asia/Jakarta), Sen–Jum."
+            }
+        },
+
+        "privacy": {
+            "title": "Kebijakan Privasi — TenRusl SnipVault",
+            "heading": "Kebijakan Privasi",
+            "intro": "TenRusl SnipVault (“Layanan”) adalah vault snippet offline-first. Kami menghargai privasi Anda.",
+            "summary": {
+                "heading": "Ringkasan",
+                "item1": "Tanpa akun. Data disimpan lokal di peramban (IndexedDB).",
+                "item2": "Tidak ada pelacakan atau analitik pihak ketiga secara bawaan.",
+                "item3": "Kami tidak menjual data pribadi."
+            },
+            "data": {
+                "heading": "Data yang Diproses",
+                "body": "Aplikasi memproses konten snippet dan preferensi Anda secara lokal di perangkat. Permintaan jaringan terjadi hanya untuk memuat aset statis dan pembaruan."
+            },
+            "cookies": {
+                "heading": "Cookie & Penyimpanan",
+                "body": "Kami terutama memakai local storage/IndexedDB untuk fungsionalitas. Cookie mungkin dipakai hanya untuk preferensi dasar jika diperlukan."
+            },
+            "ads": {
+                "heading": "Periklanan",
+                "body": "Kami tidak menampilkan iklan pihak ketiga di SnipVault."
+            },
+            "rights": {
+                "heading": "Hak Anda",
+                "body": "Sesuai hukum yang berlaku, Anda dapat mengekspor atau menghapus data lokal kapan saja melalui kontrol aplikasi. Untuk pertanyaan, hubungi kami via halaman Kontak."
+            },
+            "contact": {
+                "heading": "Kontak"
+            }
+        },
+
+        "terms": {
+            "title": "Ketentuan Layanan — TenRusl SnipVault",
+            "heading": "Ketentuan Layanan",
+            "items": [
+                { "title": "Penerimaan", "body": "Dengan mengakses Layanan, Anda menyetujui ketentuan ini." },
+                {
+                    "title": "Penggunaan",
+                    "body": "Jangan menyalahgunakan Layanan, termasuk spam, penyalahgunaan, atau aktivitas melanggar hukum."
+                },
+                {
+                    "title": "Kepemilikan",
+                    "body": "Hak cipta kode sumber dan aset merek tetap pada pemilik masing-masing."
+                },
+                { "title": "Penafian", "body": "Layanan disediakan “sebagaimana adanya” tanpa jaminan." },
+                {
+                    "title": "Batas Tanggung Jawab",
+                    "body": "Kami tidak bertanggung jawab atas kerugian tidak langsung atau kehilangan data."
+                },
+                { "title": "Perubahan", "body": "Kami dapat memperbarui ketentuan ini dari waktu ke waktu." },
+                { "title": "Kontak", "body": "Lihat halaman Kontak." }
+            ]
+        },
+
+        "cookies": {
+            "title": "Kebijakan Cookie — TenRusl SnipVault",
+            "heading": "Kebijakan Cookie",
+            "intro": "Kami hanya memakai teknologi minimal yang diperlukan untuk menjalankan SnipVault, mengutamakan penyimpanan lokal dan perilaku offline-first.",
+            "types": {
+                "heading": "Jenis Penyimpanan",
+                "essential": {
+                    "name": "Esensial",
+                    "desc": "Keamanan, preferensi tanpa sesi, data offline (IndexedDB)."
+                },
+                "analytics": { "name": "Analitik opsional", "desc": "Tidak ada secara bawaan." },
+                "advertising": { "name": "Periklanan", "desc": "Tidak digunakan." }
+            },
+            "table": { "headType": "Jenis", "headPurpose": "Tujuan" },
+            "manage": {
+                "heading": "Kelola Preferensi",
+                "body": "Atur pilihan di dalam aplikasi. Anda bisa mengekspor atau menghapus data kapan saja.",
+                "resetBtn": "Reset preferensi"
+            }
+        }
+    }
+}

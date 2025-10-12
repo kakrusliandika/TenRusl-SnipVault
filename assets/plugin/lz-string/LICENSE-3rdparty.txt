@@ -1,0 +1,4 @@
+Third-Party Notices
+
+LZ-String — MIT License.
+See https://github.com/pieroxy/lz-string for full license details.

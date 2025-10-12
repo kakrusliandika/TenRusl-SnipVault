@@ -1,0 +1,7 @@
+{
+    "base_self_host": "/assets/vendor/lz-string/libs",
+    "cdn_fallback": "https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js",
+    "default_key": "s",
+    "max_hash_bytes": 1200,
+    "notes": "Simpan metadata minimal saja; gunakan { v:1, ... } untuk versi payload."
+}

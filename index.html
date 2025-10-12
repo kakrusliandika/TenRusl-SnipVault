@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>TenRusl SnipVault — Offline Snippet Vault (PWA, IndexedDB)</title>
+        <meta
+            name="description"
+            content="Vault snippet pribadi: CRUD, tag, cari, favorit, import/export JSON. 100% offline-first (IndexedDB), privat, cepat, keyboard-first."
+        />
+
+        <!-- Indexing -->
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+
+        <!-- Brand & PWA basics -->
+        <meta name="application-name" content="TenRusl SnipVault" />
+        <meta name="theme-color" content="#8b5cf6" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="color-scheme" content="dark light" />
+        <meta name="author" content="Andika Rusli - TenRusl" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta name="trhc-country" content="ID" />
+
+        <!-- Canonical & Hreflang -->
+        <link rel="canonical" href="https://tenrusl-snipvault.pages.dev/" />
+        <link rel="alternate" href="https://tenrusl-snipvault.pages.dev/" hreflang="en" />
+        <link rel="alternate" href="https://tenrusl-snipvault.pages.dev/id/" hreflang="id-ID" />
+        <link rel="alternate" href="https://tenrusl-snipvault.pages.dev/" hreflang="x-default" />
+
+        <!-- Icons & Manifest -->
+        <link rel="icon" href="/assets/images/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/assets/images/icon.svg" type="image/svg+xml" />
+        <link rel="mask-icon" href="/assets/images/icon.svg" color="#8b5cf6" />
+        <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
+
+        <!-- Fonts/Icons (local) -->
+        <link rel="stylesheet" href="/assets/plugin/fontawesome/css/all.min.css" />
+
+        <!-- Styles (order matters) -->
+        <link rel="stylesheet" href="/assets/css/theme.css?v=3" />
+        <link rel="stylesheet" href="/assets/css/chrome.css?v=3" />
+        <link rel="stylesheet" href="/assets/css/header.css?v=3" />
+        <link rel="stylesheet" href="/assets/css/footer.css?v=3" />
+        <link rel="stylesheet" href="/assets/css/app.css?v=3" />
+
+        <!-- Open Graph -->
+        <meta property="og:site_name" content="TenRusl SnipVault" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="TenRusl SnipVault — Offline Snippet Vault" />
+        <meta
+            property="og:description"
+            content="Vault snippet pribadi: CRUD, tag, cari, favorit, import/export JSON. 100% offline-first."
+        />
+        <meta property="og:url" content="https://tenrusl-snipvault.pages.dev/" />
+        <meta property="og:image" content="https://tenrusl-snipvault.pages.dev/assets/images/icon.svg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="TenRusl SnipVault preview" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="id_ID" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="TenRusl SnipVault — Offline Snippet Vault" />
+        <meta name="twitter:description" content="CRUD, tag, cari, favorit, import/export JSON. 100% offline-first." />
+        <meta name="twitter:image" content="https://tenrusl-snipvault.pages.dev/assets/images/icon.svg" />
+
+        <!-- Structured Data -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "TenRusl SnipVault",
+                "url": "https://tenrusl-snipvault.pages.dev/",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "inLanguage": "en",
+                "description": "Vault snippet pribadi: CRUD, tag, cari, favorit, import/export JSON. 100% offline-first (IndexedDB), privat, cepat.",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "creator": {
+                    "@type": "Organization",
+                    "name": "TenRusl",
+                    "url": "https://tenrusl-snipvault.pages.dev/",
+                    "logo": "https://tenrusl-snipvault.pages.dev/assets/images/icon.svg"
+                }
+            }
+        </script>
+
+        <meta name="format-detection" content="telephone=no" />
+    </head>
+    <body>
+        <a href="#main" class="skip-link">Skip to content</a>
+
+        <!-- App -->
+        <div id="main" class="sv-app" role="application" aria-label="SnipVault App">
+            <!-- Header: search + actions -->
+            <div class="sv-header">
+                <div class="sv-search">
+                    <i class="fa-solid fa-magnifying-glass icon" aria-hidden="true"></i>
+                    <input
+                        id="sv-search"
+                        type="search"
+                        placeholder="Search title/content/tags…"
+                        aria-label="Global search (Ctrl/Cmd-K)"
+                        autocomplete="off"
+                    />
+                    <span class="sv-kbd" aria-hidden="true"
+                        ><span class="kbd">Ctrl</span><span class="kbd">K</span></span
+                    >
+                </div>
+
+                <div class="sv-actions" role="toolbar" aria-label="Actions">
+                    <button id="sv-btn-new" class="btn primary" type="button" aria-label="New snippet" title="New (N)">
+                        <i class="fa-solid fa-plus icon" aria-hidden="true"></i
+                        ><span class="label" data-i18n="new">New</span>
+                    </button>
+                    <button
+                        id="sv-btn-save"
+                        class="btn"
+                        type="button"
+                        aria-label="Save snippet"
+                        title="Save (Ctrl/Cmd-S)"
+                    >
+                        <i class="fa-solid fa-save icon" aria-hidden="true"></i
+                        ><span class="label" data-i18n="save">Save</span>
+                    </button>
+                    <button
+                        id="sv-btn-duplicate"
+                        class="btn"
+                        type="button"
+                        aria-label="Duplicate snippet"
+                        title="Duplicate"
+                    >
+                        <i class="fa-regular fa-clone icon" aria-hidden="true"></i
+                        ><span class="label" data-i18n="duplicate">Duplicate</span>
+                    </button>
+                    <button
+                        id="sv-btn-delete"
+                        class="btn danger"
+                        type="button"
+                        aria-label="Delete snippet"
+                        title="Delete"
+                    >
+                        <i class="fa-solid fa-trash icon" aria-hidden="true"></i
+                        ><span class="label" data-i18n="delete">Delete</span>
+                    </button>
+                    <span class="badge" aria-live="polite"
+                        ><span data-i18n="results">Results</span>: <span id="sv-count">0</span></span
+                    >
+                </div>
+            </div>
+
+            <!-- Body: sidebar + main -->
+            <div class="sv-body">
+                <!-- Sidebar -->
+                <aside class="sv-sidebar" aria-label="Filters">
+                    <details class="sv-filterbox" open>
+                        <summary class="sv-filterbox__head">
+                            <i class="fa-solid fa-sliders icon" aria-hidden="true"></i>
+                            <span class="label" data-i18n="ui.filters">Filters</span>
+                        </summary>
+
+                        <div class="sv-group">
+                            <label for="sv-filter-language" data-i18n="language">Language</label>
+                            <select id="sv-filter-language" aria-label="Filter by language">
+                                <option value="">All</option>
+                                <option value="plaintext">plaintext</option>
+                                <option value="javascript">javascript</option>
+                                <option value="json">json</option>
+                                <option value="xml">xml</option>
+                                <option value="css">css</option>
+                                <option value="htmlmixed">htmlmixed</option>
+                                <option value="markdown">markdown</option>
+                                <option value="python">python</option>
+                                <option value="shell">shell</option>
+                                <option value="clike">clike</option>
+                            </select>
+                        </div>
+
+                        <div class="sv-group">
+                            <label for="sv-filter-tags" data-i18n="tags">Tags</label>
+                            <input
+                                id="sv-filter-tags"
+                                type="text"
+                                placeholder="tag1, tag2"
+                                aria-label="Filter by tags (comma separated)"
+                                inputmode="search"
+                            />
+                            <label class="small"
+                                ><input id="sv-filter-and" type="checkbox" />
+                                <span data-i18n="andMode">AND mode</span></label
+                            >
+                        </div>
+
+                        <div class="sv-group sv-group--row">
+                            <label class="small"
+                                ><input id="sv-filter-fav" type="checkbox" />
+                                <span data-i18n="favorites">Favorites only</span></label
+                            >
+                            <label class="small"
+                                ><input id="sv-filter-pin" type="checkbox" />
+                                <span data-i18n="pinned">Pinned only</span></label
+                            >
+                        </div>
+
+                        <div class="sv-group">
+                            <label for="sv-sort" data-i18n="sortBy">Sort by</label>
+                            <div class="sv-sort">
+                                <select id="sv-sort" aria-label="Sort by">
+                                    <option value="updated_at" selected>updated_at</option>
+                                    <option value="created_at">created_at</option>
+                                    <option value="title">title</option>
+                                    <option value="language">language</option>
+                                </select>
+                                <button
+                                    id="sv-sort-dir"
+                                    class="btn"
+                                    type="button"
+                                    data-dir="desc"
+                                    aria-label="Toggle sort direction"
+                                    title="Toggle sort direction"
+                                >
+                                    <i class="fa-solid fa-arrow-down-a-z icon" aria-hidden="true"></i>
+                                    <span class="label">desc</span>
+                                </button>
+                            </div>
+                            <label class="small"
+                                ><input id="sv-pinned-first" type="checkbox" checked />
+                                <span data-i18n="pinnedFirst">Pinned first</span></label
+                            >
+                        </div>
+
+                        <div class="sv-group sv-transfer">
+                            <button
+                                id="sv-btn-export"
+                                class="btn"
+                                type="button"
+                                aria-label="Export JSON"
+                                title="Export JSON"
+                            >
+                                <i class="fa-regular fa-file-code icon" aria-hidden="true"></i
+                                ><span class="label" data-i18n="export">Export</span>
+                            </button>
+                            <button
+                                id="sv-btn-import"
+                                class="btn"
+                                type="button"
+                                aria-label="Import JSON"
+                                title="Import JSON"
+                            >
+                                <i class="fa-solid fa-file-import icon" aria-hidden="true"></i
+                                ><span class="label" data-i18n="import">Import</span>
+                            </button>
+                        </div>
+
+                        <div id="sv-import-preview" class="sv-preview" aria-live="polite"></div>
+                    </details>
+                </aside>
+
+                <!-- Main -->
+                <main class="sv-main">
+                    <section class="sv-list-panel" aria-label="Snippets list">
+                        <div class="sv-list-head sticky">
+                            <span class="small" data-i18n="list">List</span>
+                            <span class="badge small" id="sv-count" aria-live="polite">0</span>
+                        </div>
+                        <div id="sv-list" class="sv-list" role="listbox" aria-label="Snippets"></div>
+                        <div id="sv-list-empty" class="empty small" hidden data-i18n="empty">No items</div>
+                    </section>
+
+                    <section class="sv-editor-panel" aria-label="Editor form">
+                        <div class="card grid-2">
+                            <div class="field">
+                                <label for="sv-title" data-i18n="title">Title</label>
+                                <input id="sv-title" type="text" placeholder="Untitled…" aria-label="Title" />
+                            </div>
+                            <div class="field">
+                                <label for="sv-language" data-i18n="language">Language</label>
+                                <select id="sv-language" aria-label="Language">
+                                    <option value="plaintext">plaintext</option>
+                                    <option value="javascript">javascript</option>
+                                    <option value="json">json</option>
+                                    <option value="xml">xml</option>
+                                    <option value="css">css</option>
+                                    <option value="htmlmixed">htmlmixed</option>
+                                    <option value="markdown">markdown</option>
+                                    <option value="python">python</option>
+                                    <option value="shell">shell</option>
+                                    <option value="clike">clike</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="sv-tags" data-i18n="tags">Tags</label>
+                                <input
+                                    id="sv-tags"
+                                    type="text"
+                                    placeholder="utility, fetch, array…"
+                                    aria-label="Tags (comma separated)"
+                                />
+                            </div>
+
+                            <div class="flags" role="group" aria-label="Flags">
+                                <label class="small"
+                                    ><input id="sv-favorite" type="checkbox" />
+                                    <span data-i18n="favorite">Favorite</span></label
+                                >
+                                <label class="small"
+                                    ><input id="sv-pinned" type="checkbox" />
+                                    <span data-i18n="pinned">Pinned</span></label
+                                >
+                                <button
+                                    id="sv-btn-copy"
+                                    class="btn ghost"
+                                    type="button"
+                                    aria-label="Copy content"
+                                    title="Copy content"
+                                >
+                                    <i class="fa-regular fa-copy icon" aria-hidden="true"></i
+                                    ><span class="label" data-i18n="copy">Copy</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card" aria-label="Code editor">
+                            <div id="sv-editor-host" role="region" aria-label="Code editor host"></div>
+                        </div>
+
+                        <div class="card">
+                            <div class="grid-2">
+                                <div class="field">
+                                    <label for="sv-notes" data-i18n="notes">Notes</label>
+                                    <textarea
+                                        id="sv-notes"
+                                        placeholder="# Notes (markdown-lite)…"
+                                        aria-label="Notes"
+                                    ></textarea>
+                                </div>
+                                <div class="field">
+                                    <label data-i18n="preview">Preview</label>
+                                    <div id="sv-preview-notes" aria-live="polite"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+
+            <!-- SnipVault Tutorial Modal -->
+            <div id="sv-guide-modal" class="sv-modal" hidden aria-hidden="true">
+                <div class="sv-modal__backdrop" data-close="1"></div>
+
+                <div class="sv-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="svg-title" tabindex="-1">
+                    <header class="sv-modal__header">
+                        <h2 id="svg-title" class="sv-modal__title" data-i18n="guide.title">How to use SnipVault</h2>
+                        <button
+                            id="svg-close"
+                            class="icon-btn"
+                            type="button"
+                            aria-label="Close tutorial"
+                            data-close="1"
+                        >
+                            <i class="fa-solid fa-xmark icon" aria-hidden="true"></i>
+                        </button>
+                    </header>
+
+                    <div class="sv-modal__subtitle muted" data-i18n="guide.subtitle">
+                        Quick start, tips, offline, backup—everything in one page.
+                    </div>
+
+                    <div class="sv-slider" id="svg-slider" data-index="0" aria-roledescription="carousel">
+                        <div class="sv-slides">
+                            <!-- Slide 1: Quick Start -->
+                            <article class="sv-slide" aria-roledescription="slide">
+                                <h3 data-i18n="guide.quickstart.title">Quick Start</h3>
+                                <ol class="sv-ol">
+                                    <li data-i18n="guide.quickstart.steps.0" data-i18n-html>
+                                        Click <b>New</b> to create a snippet.
+                                    </li>
+                                    <li data-i18n="guide.quickstart.steps.1" data-i18n-html>
+                                        Fill <b>Title</b>, choose <b>Language</b>, type your code/notes.
+                                    </li>
+                                    <li data-i18n="guide.quickstart.steps.2" data-i18n-html>
+                                        Add <b>Tags</b> (comma separated) for easy filtering.
+                                    </li>
+                                    <li data-i18n="guide.quickstart.steps.3" data-i18n-html>
+                                        Mark <b>Favorite</b> or <b>Pinned</b> if needed.
+                                    </li>
+                                    <li data-i18n="guide.quickstart.steps.4" data-i18n-html>
+                                        Press <b>Save</b> (or <span class="kbd">Ctrl</span>+<span class="kbd">S</span>).
+                                    </li>
+                                </ol>
+                                <br />
+                                <h3 data-i18n="guide.capture.title">Capture & Edit</h3>
+                                <ul class="sv-ul">
+                                    <li data-i18n="guide.capture.items.0" data-i18n-html>
+                                        Duplicate from an existing snippet using <b>Duplicate</b>.
+                                    </li>
+                                    <li data-i18n="guide.capture.items.1" data-i18n-html>
+                                        Use <b>Notes</b> panel (markdown-lite) for explanations.
+                                    </li>
+                                    <li data-i18n="guide.capture.items.2" data-i18n-html>
+                                        Click <b>Copy</b> to copy code to clipboard.
+                                    </li>
+                                </ul>
+                            </article>
+
+                            <!-- Slide 2: Import & Export + Backup -->
+                            <article class="sv-slide" aria-roledescription="slide">
+                                <h4 data-i18n="guide.search.title">Search & Filter</h4>
+                                <ul class="sv-ul">
+                                    <li data-i18n="guide.search.items.0">
+                                        Global search supports title, content, and tags.
+                                    </li>
+                                    <li data-i18n="guide.search.items.1" data-i18n-html>
+                                        Filter by <b>Language</b>, <b>Tags</b>, <b>Favorites</b>, <b>Pinned</b>.
+                                    </li>
+                                    <li data-i18n="guide.search.items.2" data-i18n-html>
+                                        Toggle <b>AND mode</b> to match all tags.
+                                    </li>
+                                    <li data-i18n="guide.search.items.3" data-i18n-html>
+                                        Sort by <b>updated_at</b>, <b>created_at</b>, <b>title</b>, or <b>language</b>.
+                                    </li>
+                                </ul>
+                                <h4 data-i18n="guide.transfer.title">Import & Export</h4>
+                                <ul class="sv-ul">
+                                    <li data-i18n="guide.transfer.items.0" data-i18n-html>
+                                        Click <b>Export</b> to download <code>.json</code> of all snippets.
+                                    </li>
+                                    <li data-i18n="guide.transfer.items.1" data-i18n-html>
+                                        Use <b>Import</b> to load a previous export; conflicts are auto-checked.
+                                    </li>
+                                    <li data-i18n="guide.transfer.items.2" data-i18n-html>
+                                        Choose strategy: <i>skip</i>, <i>overwrite-id</i>, or <i>always-insert</i> (see
+                                        preview).
+                                    </li>
+                                </ul>
+                                <h4 data-i18n="guide.backup.title">Backup & Restore</h4>
+                                <ul class="sv-ul">
+                                    <li data-i18n="guide.backup.items.0">
+                                        Enable periodic backup reminders in Settings (e.g., every 7 days).
+                                    </li>
+                                    <li data-i18n="guide.backup.items.1">
+                                        Keep exports in cloud storage or version control.
+                                    </li>
+                                </ul>
+                            </article>
+
+                            <!-- Slide 3: Shortcuts + Offline + Troubleshoot + Privacy -->
+                            <article class="sv-slide" aria-roledescription="slide">
+                                <h4 data-i18n="guide.shortcuts.title">Keyboard Shortcuts</h4>
+                                <ul class="sv-ul">
+                                    <li data-i18n="guide.shortcuts.items.0" data-i18n-html>
+                                        <span class="kbd">Ctrl</span>+<span class="kbd">K</span> — Global search
+                                    </li>
+                                    <li data-i18n="guide.shortcuts.items.1" data-i18n-html>
+                                        <span class="kbd">Ctrl</span>+<span class="kbd">S</span> — Save
+                                    </li>
+                                    <li data-i18n="guide.shortcuts.items.2" data-i18n-html>
+                                        <span class="kbd">N</span> — New snippet
+                                    </li>
+                                    <li data-i18n="guide.shortcuts.items.3" data-i18n-html>
+                                        <span class="kbd">Del</span> — Delete (with confirm)
+                                    </li>
+                                </ul>
+                                <h4 data-i18n="guide.offline.title">Offline & PWA</h4>
+                                <ul class="sv-ul">
+                                    <li data-i18n="guide.offline.items.0">
+                                        Install as App (PWA) for 1-click access; works fully offline.
+                                    </li>
+                                    <li data-i18n="guide.offline.items.1">
+                                        Updates are small; if a banner appears, reload to apply.
+                                    </li>
+                                </ul>
+                                <h4 data-i18n="guide.troubleshoot.title">Troubleshooting</h4>
+                                <ul class="sv-ul">
+                                    <li data-i18n="guide.troubleshoot.items.0">
+                                        If list is empty, check filters and clear search.
+                                    </li>
+                                    <li data-i18n="guide.troubleshoot.items.1">
+                                        If save fails, ensure browser storage is not blocked (incognito quotas).
+                                    </li>
+                                    <li data-i18n="guide.troubleshoot.items.2">
+                                        Import errors: confirm file is a valid SnipVault export.
+                                    </li>
+                                </ul>
+                                <h4 data-i18n="guide.privacy.title">Privacy & Security</h4>
+                                <ul class="sv-ul">
+                                    <li data-i18n="guide.privacy.items.0" data-i18n-html>
+                                        Data stays in your browser (IndexedDB). Optional local encryption via
+                                        <b>Secure Mode</b>.
+                                    </li>
+                                    <li data-i18n="guide.privacy.items.1">
+                                        Always export before clearing site data or reinstalling the browser.
+                                    </li>
+                                </ul>
+                            </article>
+                        </div>
+
+                        <button id="svg-prev" class="sv-slider__nav prev" type="button" aria-label="Previous slide">
+                            <i class="fa-solid fa-chevron-left icon" aria-hidden="true"></i>
+                        </button>
+                        <button id="svg-next" class="sv-slider__nav next" type="button" aria-label="Next slide">
+                            <i class="fa-solid fa-chevron-right icon" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="sv-dots" role="tablist" aria-label="Slides"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <noscript
+            ><p style="padding: 12px" aria-live="polite">
+                JavaScript is required to run TenRusl SnipVault. Please enable it.
+            </p></noscript
+        >
+
+        <!-- Scripts (order matters) -->
+        <!-- Vendor loaders -->
+        <script defer src="/assets/plugin/codemirror6/codemirror-loader.js"></script>
+        <script defer src="/assets/plugin/dompurify/dompurify-loader.js"></script>
+        <script defer src="/assets/plugin/lz-string/lzstring-loader.js"></script>
+
+        <!-- Dexie (loader + DB helper) -->
+        <script defer src="/assets/plugin/dexie/dexie-loader.js"></script>
+        <script defer src="/assets/plugin/dexie/dexie-db.js"></script>
+
+        <!-- App core -->
+        <script defer src="/assets/js/theme.js"></script>
+        <script defer src="/assets/js/language.js"></script>
+        <script defer src="/assets/js/tutorial-modal.js"></script>
+        <script defer src="/assets/js/header.js"></script>
+        <script defer src="/assets/js/app.js"></script>
+
+        <!-- Data & features -->
+        <script defer src="/assets/js/db.js"></script>
+        <script defer src="/assets/js/export-import.js"></script>
+        <script defer src="/assets/js/vault.js"></script>
+
+        <!-- Footer -->
+        <script defer src="/assets/js/footer.js"></script>
+    </body>
+</html>

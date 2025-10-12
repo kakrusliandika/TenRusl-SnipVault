@@ -1,0 +1,115 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://tenrusl.com/schemas/schema.snipvault.json",
+    "title": "SnipVault Export Schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["type", "version", "items"],
+    "properties": {
+        "type": {
+            "const": "snipvault.export",
+            "description": "Penanda tipe payload ekspor."
+        },
+        "version": {
+            "type": "integer",
+            "enum": [1],
+            "description": "Versi skema ekspor."
+        },
+        "generated_at": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Epoch milliseconds saat file diekspor."
+        },
+        "items": {
+            "type": "array",
+            "description": "Daftar snippet yang diekspor.",
+            "items": { "$ref": "#/$defs/snippet" }
+        },
+        "meta": {
+            "type": "object",
+            "description": "Opsional. Metadata tambahan non-sensitif.",
+            "additionalProperties": true
+        }
+    },
+    "$defs": {
+        "snippet": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["title", "language", "content", "tags", "created_at", "updated_at"],
+            "properties": {
+                "id": {
+                    "description": "ID unik snippet (boleh number untuk Dexie, string untuk KV).",
+                    "anyOf": [
+                        { "type": "integer", "minimum": 0 },
+                        { "type": "string", "minLength": 1, "maxLength": 128 }
+                    ]
+                },
+                "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+                "language": {
+                    "type": "string",
+                    "description": "Bahasa syntax highlighting.",
+                    "enum": [
+                        "plaintext",
+                        "javascript",
+                        "json",
+                        "xml",
+                        "css",
+                        "htmlmixed",
+                        "markdown",
+                        "python",
+                        "shell",
+                        "clike"
+                    ]
+                },
+                "content": { "type": "string", "minLength": 0 },
+                "tags": {
+                    "type": "array",
+                    "items": { "type": "string", "minLength": 1, "maxLength": 48 },
+                    "maxItems": 50,
+                    "uniqueItems": true
+                },
+                "notes": { "type": "string", "minLength": 0 },
+                "favorite": {
+                    "description": "Tanda favorit. Ekspor menerima boolean atau 0/1.",
+                    "anyOf": [{ "type": "boolean" }, { "type": "integer", "enum": [0, 1] }],
+                    "default": false
+                },
+                "pinned": {
+                    "description": "Tanda pinned. Ekspor menerima boolean atau 0/1.",
+                    "anyOf": [{ "type": "boolean" }, { "type": "integer", "enum": [0, 1] }],
+                    "default": false
+                },
+                "created_at": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Epoch milliseconds saat dibuat."
+                },
+                "updated_at": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Epoch milliseconds saat terakhir diubah."
+                }
+            }
+        }
+    },
+    "examples": [
+        {
+            "type": "snipvault.export",
+            "version": 1,
+            "generated_at": 1733224800000,
+            "items": [
+                {
+                    "id": 1,
+                    "title": "Contoh",
+                    "language": "javascript",
+                    "content": "console.log('hello');",
+                    "tags": ["demo", "js"],
+                    "favorite": 1,
+                    "pinned": 0,
+                    "created_at": 1733224700000,
+                    "updated_at": 1733224800000
+                }
+            ]
+        }
+    ]
+}

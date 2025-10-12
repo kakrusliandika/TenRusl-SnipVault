@@ -1,0 +1,70 @@
+{
+    "version": 1,
+    "updated_at": 1733224800000,
+    "notes": "Template dasar SnipVault. Aman untuk disisipkan sebagai draft snippet baru (tanpa id/metadata waktu).",
+    "templates": [
+        {
+            "title": "JavaScript • Fungsi & Export",
+            "language": "javascript",
+            "tags": ["template", "javascript", "function", "module"],
+            "notes": "Fungsi util dasar + export default.",
+            "content": "/* JS Utility Template */\nexport function sum(a, b) {\n  if (typeof a !== 'number' || typeof b !== 'number') throw new TypeError('numbers only');\n  return a + b;\n}\n\nexport default function main() {\n  const out = sum(2, 3);\n  console.log('sum =', out);\n}\n\n// Jalankan manual\n// main();\n"
+        },
+        {
+            "title": "JavaScript • Fetch API (JSON)",
+            "language": "javascript",
+            "tags": ["template", "javascript", "fetch", "http"],
+            "notes": "Contoh fetch GET JSON dengan error handling.",
+            "content": "async function fetchJSON(url, opts = {}) {\n  const res = await fetch(url, { ...opts, headers: { 'Accept': 'application/json', ...(opts.headers||{}) } });\n  if (!res.ok) throw new Error(`HTTP ${res.status}`);\n  return res.json();\n}\n\n// Contoh pakai\n// fetchJSON('https://api.example.com/data').then(console.log).catch(console.error);\n"
+        },
+        {
+            "title": "HTML • Dokumen Dasar",
+            "language": "htmlmixed",
+            "tags": ["template", "html", "skeleton"],
+            "notes": "Dokumen HTML5 minimal; mobile-friendly.",
+            "content": "<!doctype html>\n<html lang=\"id\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <title>Judul Halaman</title>\n  <meta name=\"description\" content=\"Deskripsi singkat.\" />\n</head>\n<body>\n  <main>\n    <h1>Hai 👋</h1>\n    <p>Mulai dari sini…</p>\n  </main>\n</body>\n</html>\n"
+        },
+        {
+            "title": "CSS • Token & Reset Ringan",
+            "language": "css",
+            "tags": ["template", "css", "tokens", "reset"],
+            "notes": "Token tema + reset sederhana.",
+            "content": ":root{\n  --bg: #0b1020; --fg: #e6e8ee; --accent: #8b5cf6;\n  --radius: 12px; --gap: 12px; --shadow: 0 6px 24px rgba(0,0,0,.15);\n}\n*{ box-sizing: border-box; }\nhtml, body{ height:100%; }\nbody{ margin:0; background:var(--bg); color:var(--fg); font:14px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, 'Apple Color Emoji','Segoe UI Emoji'; }\n\n.btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border-radius:var(--radius); background:var(--accent); color:#fff; box-shadow:var(--shadow); border:0; cursor:pointer; }\n.btn:focus{ outline:2px solid #fff3; outline-offset:2px; }\n"
+        },
+        {
+            "title": "Markdown • Struktur Dasar",
+            "language": "markdown",
+            "tags": ["template", "markdown", "doc"],
+            "notes": "Judul, daftar, kode, tabel.",
+            "content": "# Judul Dokumen\n\nRingkasan singkat di sini.\n\n## Fitur\n- Poin 1\n- Poin 2\n\n## Kode\n```js\nconsole.log('hello');\n```\n\n## Tabel\n| Kolom | Nilai |\n|------:|:------|\n| 1     | Satu  |\n"
+        },
+        {
+            "title": "Python • CLI Dasar",
+            "language": "python",
+            "tags": ["template", "python", "cli"],
+            "notes": "Entrypoint CLI sederhana.",
+            "content": "#!/usr/bin/env python3\nimport argparse\n\n\ndef main():\n    p = argparse.ArgumentParser(description='Demo CLI')\n    p.add_argument('--name', default='world')\n    args = p.parse_args()\n    print(f\"Hello, {args.name}!\")\n\n\nif __name__ == '__main__':\n    main()\n"
+        },
+        {
+            "title": "Shell • Skrip Dasar",
+            "language": "shell",
+            "tags": ["template", "shell", "bash"],
+            "notes": "Skrip bash aman set -euo pipefail.",
+            "content": "#!/usr/bin/env bash\nset -euo pipefail\n\nNAME=${1:-world}\necho \"Hello, ${NAME}!\"\n"
+        },
+        {
+            "title": "JSON • Konfigurasi App",
+            "language": "json",
+            "tags": ["template", "json", "config"],
+            "notes": "Contoh konfigurasi aplikasi.",
+            "content": "{\n  \"name\": \"my-app\",\n  \"version\": \"1.0.0\",\n  \"features\": { \"darkMode\": true, \"telemetry\": false },\n  \"endpoints\": [\"/api/v1/status\", \"/api/v1/data\"]\n}\n"
+        },
+        {
+            "title": "C-like • Fungsi (C)",
+            "language": "clike",
+            "tags": ["template", "c", "clike"],
+            "notes": "Contoh program C minimal.",
+            "content": "#include <stdio.h>\n\nint sum(int a, int b){ return a + b; }\n\nint main(void){\n  printf(\"sum = %d\\n\", sum(2,3));\n  return 0;\n}\n"
+        }
+    ]
+}

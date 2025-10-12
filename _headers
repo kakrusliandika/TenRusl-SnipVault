@@ -1,0 +1,39 @@
+/ 
+  # Hardening
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+  # CSP: izinkan semua loader/vendor lokal, worker, i18n JSON. Tidak ada eval/inline/3rd-party.
+  Content-Security-Policy: \
+    default-src 'self'; \
+    script-src 'self'; \
+    style-src 'self'; \
+    img-src 'self' data: blob:; \
+    font-src 'self'; \
+    connect-src 'self'; \
+    worker-src 'self' blob:; \
+    manifest-src 'self'; \
+    media-src 'self'; \
+    base-uri 'self'; \
+    form-action 'self'; \
+    frame-ancestors 'none'; \
+    object-src 'none'
+
+/assets/*
+  # Cache panjang utk aset fingerprinted/immutable (CSS, JS vendor, ikon)
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  # HTML jangan dibekukan terlalu lama
+  Cache-Control: public, max-age=600
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=3600
+
+/sw.js
+  # SW harus no-cache agar update cepat
+  Cache-Control: no-cache
+  Service-Worker-Allowed: /

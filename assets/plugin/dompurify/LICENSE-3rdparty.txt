@@ -1,0 +1,4 @@
+Third-Party Notices
+
+DOMPurify — Apache-2.0 License.
+See https://github.com/cure53/DOMPurify and the jsDelivr distribution for full license details.

@@ -1,0 +1,9 @@
+# TenRusl SnipVault — robots
+# Domain produksi final
+User-agent: *
+Allow: /
+
+# Disallow area non-konten jika perlu (opsional)
+# Disallow: /assets/
+
+Sitemap: https://tenrusl-snipvault.pages.dev/sitemap.xml

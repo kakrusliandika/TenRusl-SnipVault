@@ -1,0 +1,224 @@
+{
+    "meta": {
+        "name": "TenRusl SnipVault",
+        "locale": "id",
+        "updated_at": 1760029200000,
+        "version": 2
+    },
+    "app": {
+        "title": "SnipVault",
+        "subtitle": "Vault snippet pribadi — cepat, privat, offline."
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "snippets": "Snippet",
+        "settings": "Pengaturan",
+        "about": "Tentang"
+    },
+    "actions": {
+        "new": "Baru",
+        "save": "Simpan",
+        "delete": "Hapus",
+        "duplicate": "Duplikat",
+        "copy": "Salin",
+        "export": "Ekspor",
+        "import": "Impor",
+        "close": "Tutup",
+        "confirm": "Konfirmasi",
+        "cancel": "Batal",
+        "apply": "Terapkan",
+        "reset": "Atur Ulang",
+        "ok": "OK",
+        "open": "Buka"
+    },
+    "filters": {
+        "search_placeholder": "Cari judul, isi, atau tag…",
+        "language": "Bahasa",
+        "tags": "Tag",
+        "tags_hint": "Pisahkan dengan koma",
+        "and_mode": "AND (semua tag)",
+        "favorite": "Favorit",
+        "pinned": "Pin",
+        "pinned_first": "Pin di atas"
+    },
+    "sort": {
+        "label": "Urut",
+        "updated_at": "Terakhir diubah",
+        "created_at": "Pertama dibuat",
+        "title": "Judul",
+        "language": "Bahasa",
+        "asc": "Naik",
+        "desc": "Turun"
+    },
+    "editor": {
+        "title": "Judul",
+        "language": "Bahasa",
+        "content": "Isi",
+        "notes": "Catatan",
+        "favorite": "Favorit",
+        "pinned": "Pin",
+        "preview_notes": "Pratinjau Catatan",
+        "empty": "Belum ada snippet yang dipilih."
+    },
+    "status": {
+        "count": "{{n}} hasil",
+        "empty_list": "Tidak ada snippet. Buat yang pertama!",
+        "init_error": "Gagal inisialisasi. Periksa konsol."
+    },
+    "shortcuts": {
+        "palette": "Pencarian global",
+        "save": "Simpan",
+        "new": "Snippet baru",
+        "nav": "Navigasi daftar",
+        "enter": "Buka snippet"
+    },
+    "export": {
+        "title": "Ekspor",
+        "all": "Ekspor semua",
+        "selected": "Ekspor terpilih",
+        "filename_all": "snipvault-export-{{date}}.json",
+        "filename_sel": "snipvault-selection-{{date}}.json",
+        "done": "Ekspor selesai ({{n}} item)."
+    },
+    "import": {
+        "title": "Impor",
+        "pick_file": "Pilih berkas JSON ekspor SnipVault",
+        "strategy": "Strategi konflik",
+        "strategy_skip": "Lewati yang bertabrakan",
+        "strategy_overwrite_id": "Timpa jika ID sama",
+        "strategy_insert_new": "Selalu sisipkan sebagai baru",
+        "dedup_by_title": "Hindari duplikat berdasarkan judul",
+        "preview": "Pratinjau Konflik",
+        "summary": "Total: {{total}}, Diimpor: {{imported}}, Dilewati: {{skipped}}",
+        "no_conflict": "Tidak ada konflik terdeteksi.",
+        "has_conflict": "Konflik ditemukan: {{n}}"
+    },
+    "dialogs": {
+        "delete_confirm": "Hapus snippet ini?",
+        "clipboard_denied": "Clipboard gagal. Izin diperlukan."
+    },
+    "settings": {
+        "theme": "Tema",
+        "theme_system": "Ikuti sistem",
+        "theme_light": "Terang",
+        "theme_dark": "Gelap",
+        "secure_mode": "Mode Aman (enkripsi lokal)",
+        "editor": "Editor",
+        "editor_font": "Font Mono",
+        "editor_size": "Ukuran Font",
+        "language_ui": "Bahasa UI",
+        "backup": "Pengingat Cadangan",
+        "every_days": "Setiap {{n}} hari"
+    },
+    "pwa": {
+        "install": "Pasang Aplikasi",
+        "offline_ready": "Siap offline",
+        "update_available": "Pembaruan tersedia — muat ulang?"
+    },
+    "aliases": {
+        "new": "Baru",
+        "save": "Simpan",
+        "delete": "Hapus",
+        "duplicate": "Duplikat",
+        "copy": "Salin",
+        "export": "Ekspor",
+        "import": "Impor",
+        "close": "Tutup",
+        "confirm": "Konfirmasi",
+        "cancel": "Batal",
+        "apply": "Terapkan",
+        "reset": "Atur Ulang",
+        "ok": "OK",
+        "open": "Buka",
+        "results": "Hasil",
+        "language": "Bahasa",
+        "tags": "Tag",
+        "andMode": "Mode AND",
+        "favorites": "Hanya favorit",
+        "pinned": "Pin",
+        "pinnedFirst": "Pin di atas",
+        "sortBy": "Urutkan",
+        "title": "Judul",
+        "notes": "Catatan",
+        "preview": "Pratinjau",
+        "list": "Daftar",
+        "empty": "Tidak ada item"
+    },
+    "guide": {
+        "title": "Cara Menggunakan SnipVault",
+        "subtitle": "Panduan ringkas, tips, offline, dan backup — semuanya di satu halaman.",
+        "quickstart": {
+            "title": "Mulai Cepat",
+            "steps": [
+                "Klik <b>Baru</b> untuk membuat snippet.",
+                "Isi <b>Judul</b>, pilih <b>Bahasa</b>, lalu ketik kode/catatan.",
+                "Tambahkan <b>Tag</b> (dipisah koma) agar mudah difilter.",
+                "Tandai <b>Favorit</b> atau <b>Pin</b> bila perlu.",
+                "Tekan <b>Simpan</b> (atau <span class=\"kbd\">Ctrl</span>+<span class=\"kbd\">S</span>)."
+            ]
+        },
+        "capture": {
+            "title": "Tangkap & Edit",
+            "items": [
+                "Gandakan dari snippet yang ada dengan <b>Duplikat</b>.",
+                "Gunakan panel <b>Catatan</b> (markdown-lite) untuk penjelasan.",
+                "Klik <b>Salin</b> untuk menyalin kode ke clipboard."
+            ]
+        },
+        "search": {
+            "title": "Cari & Filter",
+            "items": [
+                "Pencarian global mencakup judul, isi, dan tag.",
+                "Filter berdasarkan <b>Bahasa</b>, <b>Tag</b>, <b>Favorit</b>, dan <b>Pin</b>.",
+                "Aktifkan <b>mode AND</b> untuk mencocokkan semua tag.",
+                "Urutkan menurut <b>updated_at</b>, <b>created_at</b>, <b>title</b>, atau <b>language</b>."
+            ]
+        },
+        "transfer": {
+            "title": "Impor & Ekspor",
+            "items": [
+                "Klik <b>Ekspor</b> untuk mengunduh <code>.json</code> semua snippet.",
+                "Gunakan <b>Impor</b> untuk memuat ekspor sebelumnya; konflik dicek otomatis.",
+                "Pilih strategi: <i>skip</i>, <i>overwrite-id</i>, atau <i>always-insert</i> (lihat pratinjau)."
+            ]
+        },
+        "backup": {
+            "title": "Backup & Pemulihan",
+            "items": [
+                "Aktifkan pengingat backup berkala di Pengaturan (misal setiap 7 hari).",
+                "Simpan hasil ekspor di cloud storage atau version control."
+            ]
+        },
+        "offline": {
+            "title": "Offline & PWA",
+            "items": [
+                "Pasang sebagai Aplikasi (PWA) untuk akses 1-klik; sepenuhnya berjalan offline.",
+                "Pembaruan kecil; jika ada banner, muat ulang untuk menerapkan."
+            ]
+        },
+        "shortcuts": {
+            "title": "Pintasan Keyboard",
+            "items": [
+                "<span class=\"kbd\">Ctrl</span>+<span class=\"kbd\">K</span> — Pencarian global",
+                "<span class=\"kbd\">Ctrl</span>+<span class=\"kbd\">S</span> — Simpan",
+                "<span class=\"kbd\">N</span> — Snippet baru",
+                "<span class=\"kbd\">Del</span> — Hapus (dengan konfirmasi)"
+            ]
+        },
+        "troubleshoot": {
+            "title": "Pemecahan Masalah",
+            "items": [
+                "Jika daftar kosong, periksa filter dan kosongkan pencarian.",
+                "Jika gagal menyimpan, pastikan penyimpanan browser tidak diblokir (kuota incognito).",
+                "Impor error: pastikan file adalah ekspor SnipVault yang valid."
+            ]
+        },
+        "privacy": {
+            "title": "Privasi & Keamanan",
+            "items": [
+                "Data tetap di browser Anda (IndexedDB). Opsi enkripsi lokal melalui Mode Aman.",
+                "Selalu lakukan ekspor sebelum menghapus data situs atau memasang ulang browser."
+            ]
+        }
+    }
+}
