@@ -34,7 +34,7 @@
         f.className = "site-footer";
         f.innerHTML = `
       <div class="left">
-        <span>© ${year} TenRusl Highlight Code</span>
+        <span>© ${year} TenRusl SnipVault</span>
         <span class="badge">PWA</span>
       </div>
       <div class="right">
@@ -50,7 +50,7 @@
           <i class="fa-solid fa-cookie-bite icon" aria-hidden="true"></i>
           <span class="label">Cookies</span>
         </a>
-        <a href="https://github.com/kakrusliandika/TenRusl-HighlightCode" target="_blank" rel="noopener" class="icon-btn ghost">
+        <a href="https://github.com/kakrusliandika/TenRusl-SnipVault" target="_blank" rel="noopener" class="icon-btn ghost">
           <i class="fa-brands fa-github icon" aria-hidden="true"></i>
           <span class="label">GitHub</span>
         </a>

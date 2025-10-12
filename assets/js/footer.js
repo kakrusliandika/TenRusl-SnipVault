@@ -39,7 +39,7 @@
         <div class="muted">
           © <span id="year"></span> TenRusl SnipVault
           <span class="dot">•</span>
-          <span class="badge">Offline-first</span>
+          <span class="badge">PWA</span>
         </div>
       </div>
       <div class="right">
@@ -54,6 +54,10 @@
         <a href="/pages/cookies.html" class="icon-btn" data-i18n="cookies" title="Cookies">
           <i class="fa-solid fa-cookie-bite icon" aria-hidden="true"></i>
           <span class="label">Cookies</span>
+        </a>
+        <a href="https://github.com/kakrusliandika/TenRusl-SnipVault" target="_blank" rel="noopener" class="icon-btn ghost">
+          <i class="fa-brands fa-github icon" aria-hidden="true"></i>
+          <span class="label">GitHub</span>
         </a>
       </div>`;
         document.body.appendChild(f);
