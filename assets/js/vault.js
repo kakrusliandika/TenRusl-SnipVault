@@ -1,4 +1,3 @@
-// C:\laragon\www\tenrusl-snipvault\assets\js\vault.js
 /*!
  * TenRusl SnipVault — Vault UI Glue (FINAL)
  * Mengikat UI ke SVDB dan SnipVaultTransfer.

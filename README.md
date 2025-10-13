@@ -9,7 +9,7 @@
 ![Stars](https://img.shields.io/github/stars/kakrusliandika/TenRusl-SnipVault?style=social)
 ![Forks](https://img.shields.io/github/forks/kakrusliandika/TenRusl-SnipVault?style=social)
 
-Live: **—**
+Live: **[https://tenrusl-snipvault.pages.dev/](https://tenrusl-snipvault.pages.dev/)**
 
 ---
 

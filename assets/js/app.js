@@ -1,4 +1,3 @@
-// C:\laragon\www\tenrusl-snipvault\assets\js\app.js
 /*!
  * TenRusl SnipVault — Vendor bootstrap & validator
  * - Set SV_PATHS (lokal/offline-first)

@@ -1,4 +1,3 @@
-// C:\laragon\www\tenrusl-snipvault\assets\js\db.js
 /*!
  * TenRusl SnipVault — DB Abstraction (SAVE pasti jalan)
  * - Primary: SnipVaultDB (Dexie wrapper)
