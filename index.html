@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js" dir="ltr">
     <head>
+        <!-- Charset & Viewport -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <!-- Title & Description -->
         <title>TenRusl SnipVault — Offline Snippet Vault (PWA, IndexedDB)</title>
         <meta
             name="description"
@@ -11,8 +13,8 @@
         />
 
         <!-- Indexing -->
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="googlebot" content="index, follow" />
+        <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+        <meta name="googlebot" content="index,follow" />
 
         <!-- Brand & PWA basics -->
         <meta name="application-name" content="TenRusl SnipVault" />
@@ -24,28 +26,40 @@
         <meta name="author" content="Andika Rusli - TenRusl" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="trhc-country" content="ID" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-TileColor" content="#8b5cf6" />
 
-        <!-- Canonical & Hreflang -->
+        <!-- Canonical & Hreflang (root = EN) -->
         <link rel="canonical" href="https://tenrusl-snipvault.pages.dev/" />
+        <link rel="alternate" href="https://tenrusl-snipvault.pages.dev/" hreflang="x-default" />
         <link rel="alternate" href="https://tenrusl-snipvault.pages.dev/" hreflang="en" />
         <link rel="alternate" href="https://tenrusl-snipvault.pages.dev/id/" hreflang="id-ID" />
-        <link rel="alternate" href="https://tenrusl-snipvault.pages.dev/" hreflang="x-default" />
 
         <!-- Icons & Manifest -->
         <link rel="icon" href="/assets/images/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/assets/images/icon.svg" type="image/svg+xml" />
+        <!-- Use PNG for Apple touch icon (SVG often ignored by iOS) -->
+        <link rel="apple-touch-icon" href="/assets/images/icon.svg" />
         <link rel="mask-icon" href="/assets/images/icon.svg" color="#8b5cf6" />
         <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
 
-        <!-- Fonts/Icons (local) -->
-        <link rel="stylesheet" href="/assets/plugin/fontawesome/css/all.min.css" />
+        <!-- Performance: preload critical CSS -->
+        <link
+            rel="preload"
+            href="/assets/css/theme.css?v=3"
+            as="style"
+            fetchpriority="high"
+            onload="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript><link rel="stylesheet" href="/assets/css/theme.css?v=3" /></noscript>
 
         <!-- Styles (order matters) -->
-        <link rel="stylesheet" href="/assets/css/theme.css?v=3" />
         <link rel="stylesheet" href="/assets/css/chrome.css?v=3" />
         <link rel="stylesheet" href="/assets/css/header.css?v=3" />
         <link rel="stylesheet" href="/assets/css/footer.css?v=3" />
         <link rel="stylesheet" href="/assets/css/app.css?v=3" />
+
+        <!-- Fonts/Icons (local) -->
+        <link rel="stylesheet" href="/assets/plugin/fontawesome/css/all.min.css" />
 
         <!-- Open Graph -->
         <meta property="og:site_name" content="TenRusl SnipVault" />
@@ -56,18 +70,22 @@
             content="Vault snippet pribadi: CRUD, tag, cari, favorit, import/export JSON. 100% offline-first."
         />
         <meta property="og:url" content="https://tenrusl-snipvault.pages.dev/" />
-        <meta property="og:image" content="https://tenrusl-snipvault.pages.dev/assets/images/icon.svg" />
+        <!-- Use raster image for social (PNG/JPG 1200x630) -->
+        <meta property="og:image" content="/assets/images/icon.svg" />
+        <meta property="og:image:secure_url" content="/assets/images/icon.svg" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="TenRusl SnipVault preview" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="id_ID" />
+        <meta property="og:updated_time" content="2025-10-19T00:00:00+07:00" />
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="TenRusl SnipVault — Offline Snippet Vault" />
         <meta name="twitter:description" content="CRUD, tag, cari, favorit, import/export JSON. 100% offline-first." />
-        <meta name="twitter:image" content="https://tenrusl-snipvault.pages.dev/assets/images/icon.svg" />
+        <meta name="twitter:image" content="/assets/images/icon.svg" />
 
         <!-- Structured Data -->
         <script type="application/ld+json">
@@ -85,13 +103,55 @@
                     "@type": "Organization",
                     "name": "TenRusl",
                     "url": "https://tenrusl-snipvault.pages.dev/",
-                    "logo": "https://tenrusl-snipvault.pages.dev/assets/images/icon.svg"
+                    "logo": "/assets/images/icon.svg"
+                },
+                "featureList": [
+                    "CRUD snippet & tag management",
+                    "Search, favorites, pinned",
+                    "Import/Export JSON (LZ optional)",
+                    "Offline-first PWA (IndexedDB)",
+                    "Privacy-first, no telemetry",
+                    "Keyboard-first UX"
+                ],
+                "softwareVersion": "1.0.0",
+                "datePublished": "2025-10-01",
+                "dateModified": "2025-10-19",
+                "screenshot": "/assets/images/icon.svg"
+            }
+        </script>
+
+        <!-- Organization (recommended) -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "TenRusl",
+                "url": "https://tenrusl-snipvault.pages.dev/",
+                "logo": "/assets/images/icon.svg",
+                "sameAs": ["https://github.com/kakrusliandika", "https://x.com/kakrusliandika"]
+            }
+        </script>
+
+        <!-- WebSite (SearchAction) — sesuaikan endpoint jika berbeda -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "url": "https://tenrusl-snipvault.pages.dev/",
+                "name": "TenRusl SnipVault",
+                "inLanguage": "en",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://tenrusl-snipvault.pages.dev/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
                 }
             }
         </script>
 
-        <meta name="format-detection" content="telephone=no" />
+        <!-- Discovery hints -->
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     </head>
+
     <body>
         <a href="#main" class="skip-link">Skip to content</a>
 
