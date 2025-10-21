@@ -30,7 +30,7 @@
 
     // Update label tombol copy saat bahasa berubah
     function bindI18n() {
-        document.addEventListener("trhc:langchange", () => {
+        document.addEventListener("tenrusl:langchange", () => {
             $$(".btn.copy").forEach((b) => (b.textContent = window.PagesI18N?.t("copy") || "Copy"));
         });
     }

@@ -4,7 +4,7 @@
         dark: "/assets/plugin/prismjs/package/themes/prism-okaidia.min.css",
         light: "/assets/plugin/prismjs/package/themes/prism-solarizedlight.min.css",
     };
-    const LS_KEY = "trhc.theme";
+    const LS_KEY = "tenrusl.theme";
     const prismThemeEl = document.getElementById("prism-theme");
 
     function setTheme(mode) {

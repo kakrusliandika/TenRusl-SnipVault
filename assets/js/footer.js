@@ -76,7 +76,7 @@
         const f = $(".app-footer");
         if (f) applyI18N(f);
     });
-    document.addEventListener("trhc:i18nUpdated", () => {
+    document.addEventListener("tenrusl:i18nUpdated", () => {
         const f = $(".app-footer");
         if (f) applyI18N(f);
     });

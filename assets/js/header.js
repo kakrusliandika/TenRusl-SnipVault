@@ -19,10 +19,10 @@
         h.className = "app-header";
         h.innerHTML = `
       <div class="brand">
-        <img src="/assets/images/icon.svg" width="28" height="28" alt="TRDV" />
+        <img src="/assets/images/icon.svg" width="28" height="28" alt="TRSV" />
         <strong>
           <span class="brand-full">TenRusl SnipVault</span>
-          <span class="brand-abbr">TRDV</span>
+          <span class="brand-abbr">TRSV</span>
         </strong>
         <span class="badge">PWA</span>
       </div>
@@ -72,7 +72,7 @@
 
     function getCurrentUiLang() {
         try {
-            const ls = localStorage.getItem("trhc.uiLang");
+            const ls = localStorage.getItem("tenrusl.uiLang");
             if (ls) return String(ls).toLowerCase();
         } catch {}
         const html = (document.documentElement.lang || "").toLowerCase();
@@ -116,11 +116,11 @@
                 } else {
                     try {
                         const cur = getCurrentUiLang();
-                        localStorage.setItem("trhc.uiLang", cur === "en" ? "id" : "en");
+                        localStorage.setItem("tenrusl.uiLang", cur === "en" ? "id" : "en");
                     } catch {}
                     setUiBadge(header);
                     document.dispatchEvent(
-                        new CustomEvent("trhc:i18nUpdated", { detail: { lang: getCurrentUiLang() } })
+                        new CustomEvent("tenrusl:i18nUpdated", { detail: { lang: getCurrentUiLang() } })
                     );
                 }
             });
@@ -133,7 +133,7 @@
         }
     }
 
-    document.addEventListener("trhc:i18nUpdated", () => {
+    document.addEventListener("tenrusl:i18nUpdated", () => {
         const h = $(".app-header");
         if (h) applyI18N(h);
     });

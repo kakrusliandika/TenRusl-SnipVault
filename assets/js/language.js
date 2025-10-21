@@ -7,8 +7,8 @@
     "use strict";
 
     /* ---------- Storage & supported ---------- */
-    const LS_LANG = "trhc.uiLang";
-    const LS_DICT = (lang) => `trhc.i18n.${lang}`;
+    const LS_LANG = "tenrusl.uiLang";
+    const LS_DICT = (lang) => `tenrusl.i18n.${lang}`;
     const SUPPORTED = ["en", "id"];
 
     /* ---------- Optional badge ---------- */
@@ -412,15 +412,15 @@
         document.documentElement.lang = next === "id" ? "id" : "en";
         if (uiBadge) uiBadge.textContent = next.toUpperCase();
         applyI18n();
-        document.dispatchEvent(new CustomEvent("trhc:i18nUpdated", { detail: { lang: next } }));
+        document.dispatchEvent(new CustomEvent("tenrusl:i18nUpdated", { detail: { lang: next } }));
     }
 
     function detectInitialLang() {
         const fromLS = localStorage.getItem(LS_LANG);
         if (fromLS) return clamp(fromLS);
         const hint = (
-            window.__TRHC_COUNTRY ||
-            document.querySelector('meta[name="trhc-country"]')?.content ||
+            window.__tenrusl_COUNTRY ||
+            document.querySelector('meta[name="tenrusl-country"]')?.content ||
             ""
         ).toUpperCase();
         if (hint === "ID") return "id";

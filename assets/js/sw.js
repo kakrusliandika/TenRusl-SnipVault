@@ -1,7 +1,7 @@
 /* SnipVault Service Worker (scope: /assets/js/) — cache-first for static, SWR for others */
-const SV_VERSION = "sv-1.0.1-2025-10-10";
-const CORE_CACHE = `sv-core-${SV_VERSION}`;
-const RUNTIME_CACHE = `sv-rt-${SV_VERSION}`;
+const SV_VERSION = "tenrusl-1.0.1-2025-10-10";
+const CORE_CACHE = `tenrusl-core-${SV_VERSION}`;
+const RUNTIME_CACHE = `tenrusl-rt-${SV_VERSION}`;
 
 const OFFLINE_URL = "/pages/offline.html";
 
